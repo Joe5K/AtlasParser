@@ -23,14 +23,12 @@ class ParserSpiderMiddleware:
     def process_spider_input(self, response, spider):
         # Called for each response that goes through the spider
         # middleware and into the spider.
-
         # Should return None or raise an exception.
         return None
 
     def process_spider_output(self, response, result, spider):
         # Called with the results returned from the Spider, after
         # it has processed the response.
-
         # Must return an iterable of Request, dict or Item objects.
         for i in result:
             yield i

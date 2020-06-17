@@ -8,7 +8,19 @@
 import scrapy
 
 
-class ParserItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class IdnesItem(scrapy.Item):
+    link = scrapy.Field()
+    header = scrapy.Field()
+    category = scrapy.Field()
+    author = scrapy.Field()
+    published_at = scrapy.Field()
+    opener = scrapy.Field()
+    paragraphs = scrapy.Field()
+    comments = scrapy.Field()
+
+
+class IdnesCommentItem(scrapy.Item):
+    name = scrapy.Field()
+    text = scrapy.Field()
+    date = scrapy.Field()
+    link = scrapy.Field()
