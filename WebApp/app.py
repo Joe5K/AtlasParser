@@ -43,20 +43,20 @@ def filters():
                 data_set.extend(split_comments_into_words(record['comments']))
 
             counter = Counter(data_set)
-            most_common = counter.most_common(int(request.form['number']))
+            most_common = counter.most_common(n=int(request.form['number']))
             return render_template('filters.html', most_common_words=most_common)
 
         if request.form['number'].isdigit() and request.form['filters'] == 'Most commented':
             records = list(mongo.db.idnes.find({}))
             records.sort(reverse=True, key=lambda record: len(record['comments']))
 
-            return render_template('filters.html', most_commented=records, number=int(request.form['number']),
-                                   len=len, enumerate=enumerate)
+            return render_template('filters.html', most_commented=records,
+                                   number_of_results = int(request.form['number']), len=len, enumerate=enumerate)
 
     return render_template('filters.html')
 
 
-def refresh(number_of_items:int = 1):
+def refresh(number_of_items:int = 10):
     os.system(f'cd ../Parser && python run.py {number_of_items}')
 
 
