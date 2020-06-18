@@ -3,33 +3,33 @@
 <a href="{{ url_for('index') }} " class="btn btn-primary"><- Home</a><br>
 
 <dl class="row">
-    {% if details['category'] %}
+    {% if record['category'] %}
     <dt class="col-sm-3">Category</dt>
-    <dd class="col-sm-9">{{details['category']}} </dd>
+    <dd class="col-sm-9">{{record['category']}} </dd>
     {% endif %}
 
     <dt class="col-sm-3">Date</dt>
-    <dd class="col-sm-9">{{details['date']}}</dd>
+    <dd class="col-sm-9">{{record['date']}}</dd>
 
     <dt class="col-sm-3">Header</dt>
-    <dd class="col-sm-9">{{details['header']}}</dd>
+    <dd class="col-sm-9">{{record['header']}}</dd>
 
-    {% if details['image'] %}
+    {% if record['image'] %}
     <dt class="col-sm-3">Image</dt>
-    <dd class="col-sm-9"><img src="{{ details['image']}}" style="height:200px;"></dd>
+    <dd class="col-sm-9"><img src="{{ record['image']}}" style="height:200px;"></dd>
     {% endif %}
 
     <dt class="col-sm-3">Author</dt>
-    <dd class="col-sm-9">{{details['author']}}</dd>
+    <dd class="col-sm-9">{{record['author']}}</dd>
 
     <dt class="col-sm-3">Opener</dt>
-    <dd class="col-sm-9">{{details['opener']}}</dd>
+    <dd class="col-sm-9">{{record['opener']}}</dd>
 
     <dt class="col-sm-3">Paragraphs</dt>
-    <dd class="col-sm-9">{{' '.join(details['paragraphs'])}}</dd>
+    <dd class="col-sm-9">{{' '.join(record['paragraphs'])}}</dd>
 
     <dt class="col-sm-12">Comments</dt>
 
 </dl>
-{{CommentsTable(details['comments'])}}
+{{CommentsTable(record['comments'])}}
 {% endblock %}

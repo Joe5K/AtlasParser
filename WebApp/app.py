@@ -21,13 +21,13 @@ def index():
         if request.form['number'].isdigit():
             refresh(int(request.form['number']))
     records = mongo.db.idnes.find({})
-    return render_template('index.html', mytable=ArticlesTable(records))
+    return render_template('index.html', articles_table=ArticlesTable(records))
 
 
 @app.route('/detail/<int:id>')
 def detail(id):
-    details = mongo.db.idnes.find_one({'id':id})
-    return render_template('details.html', details=details, CommentsTable=CommentsTable)
+    record = mongo.db.idnes.find_one({'id':id})
+    return render_template('details.html', record=record, CommentsTable=CommentsTable)
 
 
 @app.route('/filters', methods=['GET', 'POST'])
@@ -51,7 +51,7 @@ def filters():
             records.sort(reverse=True, key=lambda record: len(record['comments']))
 
             return render_template('filters.html', most_commented=records,
-                                   number_of_results = int(request.form['number']), len=len, enumerate=enumerate)
+                                   number_of_results=int(request.form['number']), len=len, enumerate=enumerate)
 
     return render_template('filters.html')
 
