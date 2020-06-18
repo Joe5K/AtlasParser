@@ -25,7 +25,7 @@ At the top right corner there is the `Filter` button. You can find article with 
 Alterantively, you can run parser from terminal.
 ```bash
 cd Parser
-run.py 5 #5 is the optional parameter for number of articles 
+python run.py 5 #5 is the optional parameter for number of articles 
 ```
 
 ## Dependencies

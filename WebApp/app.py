@@ -14,8 +14,6 @@ Bootstrap(app)
 app.config["MONGO_URI"] = f"{MONGO_URI}{MONGO_DATABASE}"
 mongo = PyMongo(app)
 
-    #return [item for sublist in [paragraph.split() for paragraph in paragraphs] for item in sublist]
-        #yield paragraph.split()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -46,27 +44,21 @@ def filters():
 
             counter = Counter(data_set)
             most_common = counter.most_common(int(request.form['number']))
-            return render_template('filters.html', most_common_words = most_common)
+            return render_template('filters.html', most_common_words=most_common)
 
         if request.form['number'].isdigit() and request.form['filters'] == 'Most commented':
             records = list(mongo.db.idnes.find({}))
-            records.sort(reverse=True, key=lambda a: len(a['comments']))
+            records.sort(reverse=True, key=lambda record: len(record['comments']))
 
-            return render_template('filters.html', most_commented = records, number=int(request.form['number']), len=len, enumerate=enumerate)
+            return render_template('filters.html', most_commented=records, number=int(request.form['number']),
+                                   len=len, enumerate=enumerate)
 
     return render_template('filters.html')
+
 
 def refresh(number_of_items:int = 1):
     os.system(f'cd ../Parser && python run.py {number_of_items}')
 
-def get_data_from_db():
-    client = pymongo.MongoClient(MONGO_URI)
-    db = client[MONGO_DATABASE]
-    records = list(db[MONGO_COLLECTION_NAME].find({}))
-    for index, record in enumerate(records):
-        print(record)
-        record['id'] = index
-    return records
 
 def split_paragraphs_into_words(paragraphs):
     final_list = []
@@ -82,4 +74,4 @@ def split_comments_into_words(comments):
     return final_list
 
 def normalize_str_to_list(word:str):
-    return word.replace('.','').replace(',', '').replace('?', '').lower().split()
+    return word.replace('.', '').replace(',', '').replace('?', '').lower().split()

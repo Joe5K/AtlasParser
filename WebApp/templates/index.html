@@ -8,7 +8,7 @@
         </form>
     </dt>
     <dd class="col-sm-6" style="text-align: right">
-        <button class="btn btn-success" type="button" onclick="window.location.href='{{ url_for('filters')}}'">Filters</button>
+        <a href="{{ url_for('filters') }} " class="btn btn-success">Filters</a><br>>
     </dd>
 </dl>
 {{mytable}}

@@ -77,13 +77,3 @@ class IdnesCommentsParser(scrapy.Spider):
 
         next_page = response.css('#disc-list a.ico-right::attr(href)')
         yield from response.follow_all(next_page, self.parse)
-
-'''def start_requests(self):
-        import pymongo
-        client = pymongo.MongoClient(self.settings.get('MONGO_URI'))
-        database = self.settings.get('MONGO_DATABASE')
-        collection_name = self.settings.get('MONGO_COLLECTION_NAME')
-        db = client[database]
-        urls = [record["link"] for record in db[collection_name].find({})]
-        for url in urls:
-            yield scrapy.Request(url=f'{url}/diskuse/cas', callback=self.parse)'''

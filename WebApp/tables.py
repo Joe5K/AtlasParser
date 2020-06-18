@@ -8,11 +8,7 @@ class ArticlesTable(Table):
     date = Col('Date')
     header = Col('Header')
     opener = Col('Opener')
-    #paragraphs = Col('Paragraphs')
-    #comments = scrapy.Field()
-    #image = LinkCol('<img src="/tmp/IKE2low.jpg" width="200" height="85">', endpoint='index')
     details = LinkCol('Details', endpoint='detail', url_kwargs=dict(id='id') ,  td_html_attrs={'class': 'btn btn-info'})
-    #header = Col('header')
 
 
 class CommentsTable(Table):
