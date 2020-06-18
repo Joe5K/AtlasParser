@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{{ url_for('index') }} " class="btn btn-primary"><- Back</a><br>
+<form method="POST">
+    <label for="filters">Choose a filter:</label>
+        <select id="filters" name="filters">
+            <option value="Most commented">Most commented</option>
+            <option value="Most common words">Most common words</option>
+        </select><br>
+        <input required="required" type="number" name="number" placeholder="Number of articles/words">
+
+    <input type="submit">
+
+    {% if most_common_words %}
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Word</th>
+            <th>Number of uses</th>
+        </tr>
+        {% for tuple in most_common_words %}
+            <tr>
+                <th>{{tuple[0]}}</th>
+                <th>{{tuple[1]}}</th>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if most_commented %}
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>Header</td>
+            <td>Number of comments</td>
+            <td>Details</td>
+        </tr>
+        {% for index, article in enumerate(most_commented) if index < number%}
+            <tr>
+                <td>{{article.header}}</td>
+                <td>{{len(article['comments'])}}</td>
+                <td class="btn btn-info"><a href="/detail/{{article['id']}}">Details</a></td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    {% endif %}
+</form>
+{% endblock %}

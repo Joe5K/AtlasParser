@@ -1,2 +1,6 @@
 scrapy
 pymongo
+flask
+flask_bootstrap
+flask_table
+Flask-PyMongo

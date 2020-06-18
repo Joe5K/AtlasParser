@@ -14,14 +14,13 @@ BOT_NAME = 'Parser'
 SPIDER_MODULES = ['Parser.spiders']
 NEWSPIDER_MODULE = 'Parser.spiders'
 
-#FEED_EXPORT_ENCODING = 'utf-8'
-#CLOSESPIDER_ITEMCOUNT = 20
+#CLOSESPIDER_ITEMCOUNT = 1
 MONGO_URI = 'mongodb://localhost:27017/'
 MONGO_DATABASE = 'mydb'
 MONGO_COLLECTION_NAME = 'idnes'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'Parser (+http://www.yourdomain.com)'
-FEED_EXPORT_ENCODING= 'utf-8'
+FEED_EXPORT_ENCODING = 'utf-8'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
@@ -49,9 +48,9 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'Parser.middlewares.ParserSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+    'Parser.middlewares.ParserSpiderMiddleware': 1,
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html

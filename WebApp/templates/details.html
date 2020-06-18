@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{{ url_for('index') }} " class="btn btn-primary"><- Back</a><br>
+
+<dl class="row">
+    {% if details['category'] %}
+    <dt class="col-sm-3">Category</dt>
+    <dd class="col-sm-9">{{details['category']}} </dd>
+    {% endif %}
+
+    <dt class="col-sm-3">Date</dt>
+    <dd class="col-sm-9">{{details['date']}}</dd>
+
+    <dt class="col-sm-3">Header</dt>
+    <dd class="col-sm-9">{{details['header']}}</dd>
+
+    {% if details['image'] %}
+    <dt class="col-sm-3">Image</dt>
+    <dd class="col-sm-9"><img src="{{ details['image']}}" style="height:200px;"></dd>
+    {% endif %}
+
+    <dt class="col-sm-3">Author</dt>
+    <dd class="col-sm-9">{{details['author']}}</dd>
+
+    <dt class="col-sm-3">Opener</dt>
+    <dd class="col-sm-9">{{details['opener']}}</dd>
+
+    <dt class="col-sm-3">Paragraphs</dt>
+    <dd class="col-sm-9">{{' '.join(details['paragraphs'])}}</dd>
+
+    <dt class="col-sm-12">Comments</dt>
+
+</dl>
+{{CommentsTable(details['comments'])}}
+{% endblock %}

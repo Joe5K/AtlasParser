@@ -13,10 +13,11 @@ class IdnesItem(scrapy.Item):
     header = scrapy.Field()
     category = scrapy.Field()
     author = scrapy.Field()
-    published_at = scrapy.Field()
+    date = scrapy.Field()
     opener = scrapy.Field()
     paragraphs = scrapy.Field()
     comments = scrapy.Field()
+    image = scrapy.Field()
 
 
 class IdnesCommentItem(scrapy.Item):

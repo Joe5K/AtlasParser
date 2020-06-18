@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<dl class="row">
+    <dt class="col-sm-6">
+        <form method="POST">
+            <input required="required" type="number" name="number" placeholder="Number of articles">
+            <input class="btn btn-primary" type="submit" value="Refresh">
+        </form>
+    </dt>
+    <dd class="col-sm-6" style="text-align: right">
+        <button class="btn btn-success" type="button" onclick="window.location.href='{{ url_for('filters')}}'">Filters</button>
+    </dd>
+</dl>
+{{mytable}}
+{% endblock %}
