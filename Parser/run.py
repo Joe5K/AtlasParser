@@ -13,7 +13,11 @@ if __name__ == "__main__":
     settings = get_project_settings()
     configure_logging()
     runner = CrawlerRunner(settings=settings)
-    settings.update({'CLOSESPIDER_ITEMCOUNT': int(sys.argv[1])})
+    try:
+        number_of_pages = int(sys.argv[1])
+    except IndexError or ValueError:
+        number_of_pages = 10
+    settings.update({'CLOSESPIDER_ITEMCOUNT': number_of_pages})
 
     @defer.inlineCallbacks
     def crawl():
