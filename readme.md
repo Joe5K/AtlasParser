@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-cd WebApp
+cd FlaskApp
 set FLASK_APP=app.py
 flask run
 ```

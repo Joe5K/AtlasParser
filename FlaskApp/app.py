@@ -5,7 +5,7 @@ import pymongo
 from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from Parser.Parser.settings import MONGO_URI, MONGO_DATABASE, MONGO_COLLECTION_NAME
-from WebApp.tables import ArticlesTable, CommentsTable
+from FlaskApp.tables import ArticlesTable, CommentsTable
 from flask_pymongo import PyMongo
 from collections import Counter
 
