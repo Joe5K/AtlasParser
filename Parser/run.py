@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     try:
         number_of_pages = int(sys.argv[1])
-    except IndexError or ValueError:
+    except (IndexError, ValueError):
         number_of_pages = 10
     settings.update({'CLOSESPIDER_ITEMCOUNT': number_of_pages})
 
