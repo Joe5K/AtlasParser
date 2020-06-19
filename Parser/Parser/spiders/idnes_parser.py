@@ -18,11 +18,12 @@ class IdnesArticleSpider(scrapy.Spider):
 
     def parse(self, response):
         articles = response.css('.art > a.art-link::attr(href)').getall()
-        for idx, article in enumerate(articles):
-            yield response.follow(article, self.parse_article)
+        for article in articles:
             self.count += 1
-            if self.count >= self.settings['CLOSESPIDER_ITEMCOUNT']:
+            if self.count > self.settings['CLOSESPIDER_ITEMCOUNT']:
                 return
+            yield response.follow(article, self.parse_article)
+
 
         next_page = response.css('#list-art-count a.ico-right')
         yield from response.follow_all(next_page, self.parse)
