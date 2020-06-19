@@ -15,15 +15,14 @@ class IdnesArticleSpider(scrapy.Spider):
     }
     count = 0
 
-
     def parse(self, response):
         articles = response.css('.art > a.art-link::attr(href)').getall()
+
         for article in articles:
             self.count += 1
             if self.count > self.settings['CLOSESPIDER_ITEMCOUNT']:
                 return
             yield response.follow(article, self.parse_article)
-
 
         next_page = response.css('#list-art-count a.ico-right')
         yield from response.follow_all(next_page, self.parse)
@@ -62,9 +61,9 @@ class IdnesCommentsParser(scrapy.Spider):
     def parse(self, response):
         if response.status != 200:
             return
+
         comments = response.css('.cell').getall()
         for comment in comments:
-
             item = IdnesCommentItem()
             comment_selector = scrapy.Selector(text=comment)
 
